@@ -83,8 +83,7 @@ The code measures **accuracy, precision, recall and F1** on training and test da
 - Precision: the share of flagged transactions that are actually fraud.
 - Recall: the share of fraudulent transactions that are flagged.
 - F1: a score that combines precision and recall.
-
-**PR AUC** measures the area under the precision-recall curve across thresholds. It is a useful measure for imbalanced datasets because it focuses on detecting the rare fraud class while showing the trade-off between catching fraud and raising false alarms. Unlike accuracy, it does not give credit for the large number of correctly allowed legitimate transactions. The code uses trapezoidal integration, rather than average precision. The horizontal reference line shows the fraction of test transactions that are fraud.
+- PR AUC: useful measure for imbalanced datasets because it focuses on detecting the rare fraud class while showing the trade-off between catching fraud and raising false alarms. The horizontal reference line shows the mean of the test transactions (chance).
 
 ![Training and test classification metrics grouped by model](traditional_model_results/traditional_model_metrics.png)
 
