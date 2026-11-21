@@ -1,9 +1,0 @@
-model,framework,selected_threshold,category,count,realised_cost
-XGBoost,Threshold optimisation,0.5,TP,1225,3062.5
-XGBoost,Threshold optimisation,0.5,FP,5476,19166.0
-XGBoost,Threshold optimisation,0.5,TN,256884,0.0
-XGBoost,Threshold optimisation,0.5,FN,98,22212.75
-Random forest,Bayes minimum risk,,TP,1188,2970.0
-Random forest,Bayes minimum risk,,FP,5936,20776.0
-Random forest,Bayes minimum risk,,TN,256424,0.0
-Random forest,Bayes minimum risk,,FN,135,7690.1

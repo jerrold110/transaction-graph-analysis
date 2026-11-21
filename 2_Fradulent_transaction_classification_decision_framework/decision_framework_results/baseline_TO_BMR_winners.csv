@@ -1,3 +1,0 @@
-scenario,model,flag_fraud_cost,flag_legitimate_cost,test_samples,framework,threshold,total_cost,investigation_cost,missed_fraud_cost,flagged_count,true_positives,false_positives,false_negatives,true_negatives,true_positive_cost,false_positive_cost,true_negative_cost,false_negative_cost
-baseline,XGBoost,2.5,3.5,263683,Threshold optimisation,0.5,44441.25,22228.5,22212.75,6701,1225,5476,98,256884,3062.5,19166.0,0.0,22212.75
-baseline,Random forest,2.5,3.5,263683,Bayes minimum risk,,31436.1,23746.0,7690.1,7124,1188,5936,135,256424,2970.0,20776.0,0.0,7690.1

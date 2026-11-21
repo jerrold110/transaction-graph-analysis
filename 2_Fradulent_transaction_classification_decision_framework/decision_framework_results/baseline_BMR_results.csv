@@ -1,4 +1,0 @@
-scenario,model,flag_fraud_cost,flag_legitimate_cost,test_samples,framework,threshold,total_cost,investigation_cost,missed_fraud_cost,flagged_count,true_positives,false_positives,false_negatives,true_negatives,true_positive_cost,false_positive_cost,true_negative_cost,false_negative_cost
-baseline,Logistic regression,2.5,3.5,263683,Bayes minimum risk,,379124.63,378217.0,907.63,108422,1260,107162,63,155198,3150.0,375067.0,0.0,907.63
-baseline,Random forest,2.5,3.5,263683,Bayes minimum risk,,31436.1,23746.0,7690.1,7124,1188,5936,135,256424,2970.0,20776.0,0.0,7690.1
-baseline,XGBoost,2.5,3.5,263683,Bayes minimum risk,,98066.57,97119.5,947.0699999999999,28115,1283,26832,40,235528,3207.5,93912.0,0.0,947.0699999999999
