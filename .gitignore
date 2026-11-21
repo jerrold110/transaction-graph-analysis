@@ -218,3 +218,6 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Exported 3a-3e GNN models and preprocessing bundles
+/3[a-e]_gnn_models/

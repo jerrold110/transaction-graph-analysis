@@ -16,7 +16,7 @@ from sklearn.preprocessing import StandardScaler
 
 from pathlib import Path
 
-OUTPUT_DIR = Path(__file__).resolve().parent / 'traditional_model_results'
+OUTPUT_DIR = Path(__file__).resolve().parent / '1_traditional_model_results'
 OUTPUT_DIR.mkdir(exist_ok=True)
 
 df = pd.read_csv(filepath_or_buffer=(Path(__file__).resolve().parent.parents[1] / "fraudTrain.csv"),

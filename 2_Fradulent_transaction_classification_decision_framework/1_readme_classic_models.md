@@ -85,11 +85,11 @@ The code measures **accuracy, precision, recall and F1** on training and test da
 - F1: a score that combines precision and recall.
 - PR AUC: useful measure for imbalanced datasets because it focuses on detecting the rare fraud class while showing the trade-off between catching fraud and raising false alarms. The horizontal reference line shows the mean of the test transactions (chance).
 
-![Training and test classification metrics grouped by model](traditional_model_results/traditional_model_metrics.png)
+![Training and test classification metrics grouped by model](1_traditional_model_results/traditional_model_metrics.png)
 
-![Test precision-recall curves for the three traditional models](traditional_model_results/traditional_model_pr_auc.png)
+![Test precision-recall curves for the three traditional models](1_traditional_model_results/traditional_model_pr_auc.png)
 
-Each model saves `trans_num`, `amt`, `is_fraud` and `fraud_probability` for every test transaction. These files allow cost experiments without retraining. They are stored in `traditional_model_results/`, with names starting with `traditional_model_`.
+Each model saves `trans_num`, `amt`, `is_fraud` and `fraud_probability` for every test transaction. These files allow cost experiments without retraining. They are stored in `1_traditional_model_results/`, with names starting with `traditional_model_`.
 
 ## 4. Comparing the cost of decisions
 
@@ -119,7 +119,7 @@ Each model is tested at thresholds **0.2 through 0.9, in steps of 0.1**. A trans
 
 The threshold with the lowest realised cost is selected for each model. If costs tie, the lower threshold is selected. The cheapest model and threshold across all three algorithms becomes the TO winner. Stars in the graph show each algorithm's selected threshold.
 
-![Total realised cost across candidate fraud probability thresholds](decision_framework_results/baseline_TO_total_cost.png)
+![Total realised cost across candidate fraud probability thresholds](2_decision_framework_results/baseline_TO_total_cost.png)
 
 ### Experiment B: Bayes minimum risk (BMR)
 
@@ -145,11 +145,11 @@ The final comparison includes only **one TO winner and one BMR winner**:
 
 Random forest BMR costs less than XGBoost TO at baseline.
 
-![Baseline realised cost comparison of the two selected models](decision_framework_results/baseline_TO_BMR_comparison.png)
+![Baseline realised cost comparison of the two selected models](2_decision_framework_results/baseline_TO_BMR_comparison.png)
 
 The next graph breaks the decisions into TP, FP, TN and FN. Bar heights show transaction counts on a log scale. Numbers above the bars show the **total cost in euros for each category**. Both counts and costs are saved in the matching CSV.
 
-![Prediction category counts on a logarithmic scale with realised cost annotations](decision_framework_results/baseline_TO_BMR_category_breakdown.png)
+![Prediction category counts on a logarithmic scale with realised cost annotations](2_decision_framework_results/baseline_TO_BMR_category_breakdown.png)
 
 There was no hyperparameter tuning. This may help explain XGBoost's result, but the study does not prove that tuning would change the winner. Missed transaction amounts, false alarms and the accuracy of predicted probabilities also affect cost. The code does not calibrate probabilities, and class weighting can affect their accuracy as probability estimates.
 
@@ -170,7 +170,7 @@ The legitimate transaction flag cost is always the fraud transaction flag cost *
 
 XGBoost keeps its selected threshold of **0.5**. Its predictions stay the same, but their costs change. Random forest BMR recalculates risks and decisions for each cost pair. The models are not retrained or reselected, and the TO threshold is not optimised again.
 
-![Sensitivity analysis comparing realised costs for the two selected models across twelve cost combinations](decision_framework_results/sensitivity_TO_BMR_total_cost.png)
+![Sensitivity analysis comparing realised costs for the two selected models across twelve cost combinations](2_decision_framework_results/sensitivity_TO_BMR_total_cost.png)
 
 **Random forest BMR has lower realised cost in all 12 combinations.** The result is consistent over the tested range. It does not show what would happen for every possible cost pair or if the TO threshold were selected again for each pair.
 
@@ -178,13 +178,13 @@ XGBoost keeps its selected threshold of **0.5**. Its predictions stay the same, 
 
 | Location | Contents |
 |---|---|
-| `traditional_model_results/` | Standard scores, metric graph, precision-recall graph and three test probability files |
-| `decision_framework_results/baseline_TO_threshold_search.csv` | Costs for all tested thresholds and algorithms |
-| `decision_framework_results/baseline_BMR_results.csv` | BMR results for all three algorithms |
-| `decision_framework_results/baseline_TO_BMR_comparison.csv` and `baseline_TO_BMR_winners.csv` | The two winners, their costs and prediction counts |
-| `decision_framework_results/baseline_TO_BMR_category_breakdown.csv` | TP, FP, TN and FN counts and costs for both winners |
-| `decision_framework_results/sensitivity_TO_BMR_results.csv` | Detailed results for two models across twelve cost pairs |
-| `decision_framework_results/sensitivity_TO_BMR_cost_comparison.csv` | Side-by-side costs for each cost pair |
+| `1_traditional_model_results/` | Standard scores, metric graph, precision-recall graph and three test probability files |
+| `2_decision_framework_results/baseline_TO_threshold_search.csv` | Costs for all tested thresholds and algorithms |
+| `2_decision_framework_results/baseline_BMR_results.csv` | BMR results for all three algorithms |
+| `2_decision_framework_results/baseline_TO_BMR_comparison.csv` and `baseline_TO_BMR_winners.csv` | The two winners, their costs and prediction counts |
+| `2_decision_framework_results/baseline_TO_BMR_category_breakdown.csv` | TP, FP, TN and FN counts and costs for both winners |
+| `2_decision_framework_results/sensitivity_TO_BMR_results.csv` | Detailed results for two models across twelve cost pairs |
+| `2_decision_framework_results/sensitivity_TO_BMR_cost_comparison.csv` | Side-by-side costs for each cost pair |
 
 Thresholds and winners were selected using test labels, so these are exploratory results. A stronger follow-up would select models and thresholds on a separate validation period, then check them on a later test period that has not been used for selection. Tuning and probability calibration could also be tested using training and validation data.
 

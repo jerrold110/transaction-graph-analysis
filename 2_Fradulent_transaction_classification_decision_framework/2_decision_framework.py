@@ -1,6 +1,6 @@
 """Decision framework for the saved test-set fraud probabilities.
 
-Inputs in traditional_model_results beside this script (columns: trans_num, amt, is_fraud, fraud_probability):
+Inputs in 1_traditional_model_results beside this script (columns: trans_num, amt, is_fraud, fraud_probability):
     traditional_model_logistic_regression_test_probabilities.csv
     traditional_model_random_forest_test_probabilities.csv
     traditional_model_xgboost_test_probabilities.csv
@@ -243,8 +243,8 @@ def run_cost_sensitivity_analysis(datasets, winners, folder):
 
 def main():
     folder = Path(__file__).resolve().parent
-    datasets = load_predictions(folder / 'traditional_model_results')
-    output = folder / 'decision_framework_results'
+    datasets = load_predictions(folder / '1_traditional_model_results')
+    output = folder / '2_decision_framework_results'
     output.mkdir(exist_ok=True)
     thresholds, bayes, baseline = run_scenario(datasets, 'baseline', 2.5, 3.5)
     thresholds.to_csv(output / 'baseline_TO_threshold_search.csv', index=False)
